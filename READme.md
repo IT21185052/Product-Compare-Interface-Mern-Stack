@@ -11,7 +11,9 @@ This project is a web application designed to compare mobile phones based on the
   - [Running the Application](#running-the-application)
 - [Usage](#usage)
 - [Components](#components)
-- [Project Structure](#project-structure)
+- [Technologies](#Technologies)
+- [Improve Code Quality & Standards](#ImproveCodeQuality&Standardss)
+- [Contributing](#Contributing)
 
 ## Features
 
@@ -103,29 +105,6 @@ Allows users to toggle between different comparison modes.
 ### `TextBox`
 
 Displays additional information or notes related to the phones.
-
-## Project Structure
-
-compare-app/
-│
-├── backend/
-│ ├── assets/
-│ ├── models/
-│ ├── index.js
-│ ├── seed.js
-│ └── package.json
-│
-├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── assets/
-│ │ ├── components/
-│ │ ├── App.js
-│ │ ├── index.js
-│ │ └── package.json
-│
-├── .gitignore
-├── README.md
 
 
 ## Technologies
