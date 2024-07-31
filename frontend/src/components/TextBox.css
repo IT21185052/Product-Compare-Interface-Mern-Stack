@@ -1,0 +1,21 @@
+.text-box {
+    width: 100%;
+    margin-top: 80px;
+  }
+  
+  .text-field {
+    padding: 5px;
+    background-color: #f0f0f0; /* Light gray background */
+    border-bottom: 1px solid #ccc; /* Light gray border */
+    cursor: pointer;
+  }
+  
+  .text-field:hover {
+    background-color: #ef0909; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+  
+  .text-field:first-child {
+    background-color: #333; /* Darker background for the first field */
+    color: #fff; /* White text */
+  }

@@ -1,0 +1,53 @@
+.search-label {
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.search-input-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  
+}
+
+.search-input {
+  flex: 1; /* Use flex to take up remaining space */
+  height: 100%;
+  max-width: 400px; /* Increased the max-width for wider input */
+  padding: 5px 10px; /* Decreased the padding to reduce height */
+  border: 1px solid black;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+  color: #6c757d;
+}
+
+.search-button {
+  height: 90%;
+  padding: 5px 10px;
+  margin-left: 10px; /* Add some space between input and button */
+  border: 1px solid black;
+  border-radius: 1px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.phone-data {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.phone-image {
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 10px;
+}

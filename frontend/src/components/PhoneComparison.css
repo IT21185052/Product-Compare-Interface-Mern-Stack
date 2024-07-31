@@ -1,0 +1,189 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 200vh; /* Increase main container height */
+  overflow: auto;
+}
+
+.top-container {
+  display: flex;
+  height: 75vh; /* Increase the height of the top container */
+}
+
+.bottom-container {
+  height: 125vh; /* Adjust the height of the bottom container */
+  overflow-y: auto;
+  background-color: white; /* Default white color */
+}
+
+.box {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add this new CSS for the empty box and compare mode switch */
+.empty-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #dde0e3;
+}
+
+
+.top-box {
+  height: 16.67%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dde0e3;
+}
+
+.middle-box {
+  height: 66.67%;
+  display: flex;
+ 
+}
+
+.bottom-box {
+  height: 16.67%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust to space between items */
+  padding: 0 10px;
+}
+
+.left-box {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Add padding for spacing */
+}
+
+.right-box {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-name {
+  margin-bottom: 10px; /* Add margin between the name and image */
+  font-size: 1.2em;
+  text-align: center;
+  color: gray;
+  
+}
+
+.phone-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table tr {
+  border: 6px solid #dde0e3;;
+}
+
+.comparison-table td {
+  border: 3px solid #dde0e3;;
+  
+  padding: 10px;
+}
+
+.row-1 {
+  height: 7.14%; /* 1/14 of the table height */
+}
+
+.row-2 {
+  height: 14.29%; /* 2/14 of the table height */
+}
+
+.row-3 {
+  height: 28.57%; /* 4/14 of the table height */
+}
+
+.row-4 {
+  height: 21.43%; /* 3/14 of the table height */
+}
+
+.row-5 {
+  height: 28.57%; /* 4/14 of the table height */
+}
+
+.col {
+  width: 33.33%;
+}
+
+.col-1-1, .col-1-2 {
+  width: 16.67%; /* Half the width of the original column */
+}
+
+.cell-top {
+  border-bottom: 0.5px solid #dde0e3;; /* Add border to divide the top and bottom sections */
+}
+
+.cell-bottom {
+  border-top: 0.5px solid #dde0e3;; /* Ensure consistency with border */
+}
+
+.cell-1 {
+  border-bottom: 0.5px solid #dde0e3;; /* Add border to divide the top and bottom sections */
+}
+
+.cell-2 {
+  border-top: 0.5px solid #dde0e3;;
+  border-bottom: 0.5px solid #dde0e3;; /* Ensure consistency with border */
+}
+
+/* New Styles */
+.category {
+  color: red;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.subcategory {
+  color: gray;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: left; /* Smaller font size */
+}
+
+.sub-sub{
+  color: black;
+  font-size: 0.8em;
+  text-align: left;
+  font-weight: bold; /* Smaller font size */
+}
+
+.price {
+  color: red;
+  font-size: 1.7em;
+  margin-bottom: 10px;
+  font-weight: bold; /* Increase font size */
+}
+
+.logo {
+  height: 70px; /* Adjust height as needed */
+  margin-left: 10px;
+  margin-top: 30px; /* Space between price and logo */
+}
+
+.all-prices {
+  color: red;
+  font-size: 2em; /* Adjust font size */
+  margin-left: auto;
+  font-weight: bold; /* Push to the right end */
+}
+
+.thumbnail{
+  width: 100%;
+  margin-top: 30px;
+}
