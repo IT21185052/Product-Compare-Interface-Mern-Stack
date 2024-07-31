@@ -11,7 +11,7 @@ const SearchContainer = ({ setPhoneData }) => {
   };
 
   return (
-    <div className="top-box"> {/* Assuming 'top-box' is your container for top elements */}
+    <div className="top-box"> 
       <div className="search-label">Compare with</div>
       <div className="search-input-container">
         <input

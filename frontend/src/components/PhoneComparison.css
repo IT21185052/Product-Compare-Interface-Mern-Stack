@@ -1,19 +1,19 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 200vh; /* Increase main container height */
+  height: 200vh; 
   overflow: auto;
 }
 
 .top-container {
   display: flex;
-  height: 75vh; /* Increase the height of the top container */
+  height: 75vh; 
 }
 
 .bottom-container {
-  height: 125vh; /* Adjust the height of the bottom container */
+  height: 125vh;
   overflow-y: auto;
-  background-color: white; /* Default white color */
+  background-color: white; 
 }
 
 .box {
@@ -23,7 +23,7 @@
   flex-direction: column;
 }
 
-/* Add this new CSS for the empty box and compare mode switch */
+
 .empty-box {
   width: 100%;
   display: flex;
@@ -98,23 +98,23 @@
 }
 
 .row-1 {
-  height: 7.14%; /* 1/14 of the table height */
+  height: 7.14%; 
 }
 
 .row-2 {
-  height: 14.29%; /* 2/14 of the table height */
+  height: 14.29%; 
 }
 
 .row-3 {
-  height: 28.57%; /* 4/14 of the table height */
+  height: 28.57%;
 }
 
 .row-4 {
-  height: 21.43%; /* 3/14 of the table height */
+  height: 21.43%; 
 }
 
 .row-5 {
-  height: 28.57%; /* 4/14 of the table height */
+  height: 28.57%; 
 }
 
 .col {
@@ -122,24 +122,24 @@
 }
 
 .col-1-1, .col-1-2 {
-  width: 16.67%; /* Half the width of the original column */
+  width: 16.67%; 
 }
 
 .cell-top {
-  border-bottom: 0.5px solid #dde0e3;; /* Add border to divide the top and bottom sections */
+  border-bottom: 0.5px solid #dde0e3;; 
 }
 
 .cell-bottom {
-  border-top: 0.5px solid #dde0e3;; /* Ensure consistency with border */
+  border-top: 0.5px solid #dde0e3;;
 }
 
 .cell-1 {
-  border-bottom: 0.5px solid #dde0e3;; /* Add border to divide the top and bottom sections */
+  border-bottom: 0.5px solid #dde0e3;; 
 }
 
 .cell-2 {
   border-top: 0.5px solid #dde0e3;;
-  border-bottom: 0.5px solid #dde0e3;; /* Ensure consistency with border */
+  border-bottom: 0.5px solid #dde0e3;; 
 }
 
 /* New Styles */
@@ -153,34 +153,34 @@
   color: gray;
   font-weight: bold;
   font-size: 0.9em;
-  text-align: left; /* Smaller font size */
+  text-align: left; 
 }
 
 .sub-sub{
   color: black;
   font-size: 0.8em;
   text-align: left;
-  font-weight: bold; /* Smaller font size */
+  font-weight: bold; 
 }
 
 .price {
   color: red;
   font-size: 1.7em;
   margin-bottom: 10px;
-  font-weight: bold; /* Increase font size */
+  font-weight: bold; 
 }
 
 .logo {
-  height: 70px; /* Adjust height as needed */
+  height: 70px; 
   margin-left: 10px;
-  margin-top: 30px; /* Space between price and logo */
+  margin-top: 30px; 
 }
 
 .all-prices {
   color: red;
-  font-size: 2em; /* Adjust font size */
+  font-size: 2em; 
   margin-left: auto;
-  font-weight: bold; /* Push to the right end */
+  font-weight: bold; 
 }
 
 .thumbnail{

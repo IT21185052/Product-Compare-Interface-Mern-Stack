@@ -13,10 +13,10 @@
 }
 
 .search-input {
-  flex: 1; /* Use flex to take up remaining space */
+  flex: 1; 
   height: 100%;
-  max-width: 400px; /* Increased the max-width for wider input */
-  padding: 5px 10px; /* Decreased the padding to reduce height */
+  max-width: 400px; 
+  padding: 5px 10px; 
   border: 1px solid black;
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -29,7 +29,7 @@
 .search-button {
   height: 90%;
   padding: 5px 10px;
-  margin-left: 10px; /* Add some space between input and button */
+  margin-left: 10px; 
   border: 1px solid black;
   border-radius: 1px;
   background-color: #007bff;
