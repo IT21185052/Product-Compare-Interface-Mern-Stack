@@ -7,8 +7,6 @@ import phoneImage1 from '../assets/1.jpg';
 import phoneImage2 from '../assets/2.jpg';
 import logo from '../assets/logo.png';
 
-
-// Function to get YouTube thumbnail URL from video URL
 const getYouTubeThumbnailUrl = (url) => {
   const videoId = url.split('v=')[1];
   const ampersandPosition = videoId.indexOf('&');
@@ -18,7 +16,16 @@ const getYouTubeThumbnailUrl = (url) => {
   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 };
 
-// Default phone data
+const getYouTubeVideoUrl = (url) => {
+  const videoId = url.split('v=')[1];
+  const ampersandPosition = videoId.indexOf('&');
+  if (ampersandPosition !== -1) {
+    return `https://www.youtube.com/watch?v=${videoId.substring(0, ampersandPosition)}`;
+  }
+  return `https://www.youtube.com/watch?v=${videoId}`;
+};
+
+
 const defaultPhoneData1 = {
   name: 'Xiaomi 14',
   picture: phoneImage1,
@@ -74,18 +81,46 @@ const defaultPhoneData2 = {
     cpu: 'Hexa-core',
     gpu: 'Apple GPU (5-core graphics)'
   },
-  thumbnail: 'https://www.youtube.com/watch?v=cVpcl7KGly0' // YouTube video thumbnail URL
+  thumbnail: 'https://www.youtube.com/watch?v=cVpcl7KGly0'
 };
 
+const highlightDifferences = (value1, value2) => {
+  const words1 = value1.split(/[\s,/]+/);
+  const words2 = value2.split(/[\s,/]+/);
+
+  const maxLength = Math.max(words1.length, words2.length);
+
+  const highlightedWords1 = [];
+  const highlightedWords2 = [];
+
+  for (let i = 0; i < maxLength; i++) {
+    if (words1[i] === words2[i]) {
+      highlightedWords1.push(`<span class="similar">${words1[i]}</span>`);
+      highlightedWords2.push(`<span class="similar">${words2[i]}</span>`);
+    } else {
+      highlightedWords1.push(`<span class="different">${words1[i]}</span>`);
+      highlightedWords2.push(`<span class="different">${words2[i]}</span>`);
+    }
+  }
+
+  return {
+    value1: highlightedWords1.join(' '),
+    value2: highlightedWords2.join(' '),
+  };
+};
+
+
 const PhoneComparison = () => {
-  // State for the first phone data & second phone data
   const [phoneData1, setPhoneData1] = useState(defaultPhoneData1);
   const [phoneData2, setPhoneData2] = useState(defaultPhoneData2);
+  const [compareMode, setCompareMode] = useState('FULL');
 
   return (
     <div className="main-container">
       <div className="top-container">
-        <div className="box empty-box"><CompareModeSwitch /></div>
+        <div className="box empty-box">
+          <CompareModeSwitch setCompareMode={setCompareMode} />
+        </div>
         <div className="box">
           <div className="top-box">
             <SearchContainer setPhoneData={setPhoneData1} />
@@ -102,7 +137,10 @@ const PhoneComparison = () => {
             <div className="right-box">
               <TextBox />
               {phoneData1 && (
-                <img src={getYouTubeThumbnailUrl(phoneData1.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
+                <div className="thumbnail-container" onClick={() => window.open(getYouTubeVideoUrl(phoneData1.thumbnail), '_blank')}>
+                  <img src={getYouTubeThumbnailUrl(phoneData1.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
+                  <div className="play-logo"></div>
+                </div>
               )}
             </div>
           </div>
@@ -131,8 +169,11 @@ const PhoneComparison = () => {
             </div>
             <div className="right-box">
               <TextBox />
-              {phoneData2 && (
-                <img src={getYouTubeThumbnailUrl(phoneData2.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
+              {phoneData1 && (
+                <div className="thumbnail-container" onClick={() => window.open(getYouTubeVideoUrl(phoneData2.thumbnail), '_blank')}>
+                  <img src={getYouTubeThumbnailUrl(phoneData2.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
+                  <div className="play-logo"></div>
+                </div>
               )}
             </div>
           </div>
@@ -150,87 +191,121 @@ const PhoneComparison = () => {
       <div className="bottom-container">
         <table className="comparison-table">
           <tbody>
-            <tr className="row-1">
-              <td className="col-1-1 category">NETWORK</td>
-              <td className="col-1-2 subcategory">Technology</td>
-              <td className="sub-sub col">{phoneData1 ? phoneData1.network : 'N/A'}</td>
-              <td className="sub-sub col">{phoneData2 ? phoneData2.network : 'N/A'}</td>
-            </tr>
-            <tr className="row-2">
-              <td className="col-1-1 category">LAUNCH</td>
-              <td className="col-1-2 subcategory cell-content">
-                <div className="cell-top">Announced</div>
-                <div className="cell-bottom">Status</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-top">{phoneData1 ? phoneData1.launch.announced : 'N/A'}</div>
-                <div className="cell-bottom">{phoneData1 ? phoneData1.launch.status : 'N/A'}</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-top">{phoneData2 ? phoneData2.launch.announced : 'N/A'}</div>
-                <div className="cell-bottom">{phoneData2 ? phoneData2.launch.status : 'N/A'}</div>
-              </td>
-            </tr>
-            <tr className="row-3">
-              <td className="col-1-1 category">BODY</td>
-              <td className="col-1-2 subcategory cell-content">
-                <div className="cell-1">Dimension</div>
-                <div className="cell-2">Weight</div>
-                <div className="cell-top">Build</div>
-                <div className="cell-bottom">Sim</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData1 ? phoneData1.body.dimensions : 'N/A'}</div>
-                <div className="cell-2">{phoneData1 ? phoneData1.body.weight : 'N/A'}</div>
-                <div className="cell-top">{phoneData1 ? phoneData1.body.build : 'N/A'}</div>
-                <div className="cell-bottom">{phoneData1 ? phoneData1.body.sim : 'N/A'}</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData2 ? phoneData2.body.dimensions : 'N/A'}</div>
-                <div className="cell-2">{phoneData2 ? phoneData2.body.weight : 'N/A'}</div>
-                <div className="cell-top">{phoneData2 ? phoneData2.body.build : 'N/A'}</div>
-                <div className="cell-bottom">{phoneData2 ? phoneData2.body.sim : 'N/A'}</div>
-              </td>
-            </tr>
-            <tr className="row-4">
-              <td className="col-1-1 category">DISPLAY</td>
-              <td className="col-1-2 subcategory cell-content">
-                <div className="cell-1">Type</div>
-                <div className="cell-2">Size</div>
-                <div className="cell-3">Resolution</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData1 ? phoneData1.display.type : 'N/A'}</div>
-                <div className="cell-2">{phoneData1 ? phoneData1.display.size : 'N/A'}</div>
-                <div className="cell-3">{phoneData1 ? phoneData1.display.resolution : 'N/A'}</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData2 ? phoneData2.display.type : 'N/A'}</div>
-                <div className="cell-2">{phoneData2 ? phoneData2.display.size : 'N/A'}</div>
-                <div className="cell-3">{phoneData2 ? phoneData2.display.resolution : 'N/A'}</div>
-              </td>
-            </tr>
-            <tr className="row-5">
-              <td className="col-1-1 category">PLATFORM</td>
-              <td className="col-1-2 subcategory cell-content">
-                <div className="cell-1">OS</div>
-                <div className="cell-2">Chip</div>
-                <div className="cell-3">CPU</div>
-                <div className="cell-4">GPU</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData1 ? phoneData1.platform.os : 'N/A'}</div>
-                <div className="cell-2">{phoneData1 ? phoneData1.platform.chip : 'N/A'}</div>
-                <div className="cell-3">{phoneData1 ? phoneData1.platform.cpu : 'N/A'}</div>
-                <div className="cell-4">{phoneData1 ? phoneData1.platform.gpu : 'N/A'}</div>
-              </td>
-              <td className="col sub-sub cell-content">
-                <div className="cell-1">{phoneData2 ? phoneData2.platform.os : 'N/A'}</div>
-                <div className="cell-2">{phoneData2 ? phoneData2.platform.chip : 'N/A'}</div>
-                <div className="cell-3">{phoneData2 ? phoneData2.platform.cpu : 'N/A'}</div>
-                <div className="cell-4">{phoneData2 ? phoneData2.platform.gpu : 'N/A'}</div>
-              </td>
-            </tr>
+            {(() => {
+              const networkComparison = highlightDifferences(phoneData1.network, phoneData2.network);
+              return (
+                <tr className="row-1">
+                  <td className="col-1-1 category">NETWORK</td>
+                  <td className="col-1-2 subcategory">Technology</td>
+                  <td className="sub-sub col" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? networkComparison.value1 : phoneData1.network }}></td>
+                  <td className="sub-sub col" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? networkComparison.value2 : phoneData2.network }}></td>
+                </tr>
+              );
+            })()}
+            {(() => {
+              const launchAnnouncedComparison = highlightDifferences(phoneData1.launch.announced, phoneData2.launch.announced);
+              const launchStatusComparison = highlightDifferences(phoneData1.launch.status, phoneData2.launch.status);
+              return (
+                <tr className="row-2">
+                  <td className="col-1-1 category">LAUNCH</td>
+                  <td className="col-1-2 subcategory cell-content">
+                    <div className="cell-top">Announced</div>
+                    <div className="cell-bottom">Status</div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? launchAnnouncedComparison.value1 : phoneData1.launch.announced }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? launchStatusComparison.value1 : phoneData1.launch.status }}></div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? launchAnnouncedComparison.value2 : phoneData2.launch.announced }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? launchStatusComparison.value2 : phoneData2.launch.status }}></div>
+                  </td>
+                </tr>
+              );
+            })()}
+            {(() => {
+              const bodyDimensionsComparison = highlightDifferences(phoneData1.body.dimensions, phoneData2.body.dimensions);
+              const bodyWeightComparison = highlightDifferences(phoneData1.body.weight, phoneData2.body.weight);
+              const bodySimComparison = highlightDifferences(phoneData1.body.sim, phoneData2.body.sim);
+              const bodyBuildComparison = highlightDifferences(phoneData1.body.build, phoneData2.body.build);
+              return (
+                <tr className="row-3">
+                  <td className="col-1-1 category">BODY</td>
+                  <td className="col-1-2 subcategory cell-content">
+                    <div className="cell-top">Dimensions</div>
+                    <div className="cell-middle">Weight</div>
+                    <div className="cell-middle">SIM</div>
+                    <div className="cell-bottom">Build</div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyDimensionsComparison.value1 : phoneData1.body.dimensions }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyWeightComparison.value1 : phoneData1.body.weight }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodySimComparison.value1 : phoneData1.body.sim }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyBuildComparison.value1 : phoneData1.body.build }}></div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyDimensionsComparison.value2 : phoneData2.body.dimensions }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyWeightComparison.value2 : phoneData2.body.weight }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodySimComparison.value2 : phoneData2.body.sim }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? bodyBuildComparison.value2 : phoneData2.body.build }}></div>
+                  </td>
+                </tr>
+              );
+            })()}
+            {(() => {
+              const displayTypeComparison = highlightDifferences(phoneData1.display.type, phoneData2.display.type);
+              const displaySizeComparison = highlightDifferences(phoneData1.display.size, phoneData2.display.size);
+              const displayResolutionComparison = highlightDifferences(phoneData1.display.resolution, phoneData2.display.resolution);
+              return (
+                <tr className="row-4">
+                  <td className="col-1-1 category">DISPLAY</td>
+                  <td className="col-1-2 subcategory cell-content">
+                    <div className="cell-top">Type</div>
+                    <div className="cell-middle">Size</div>
+                    <div className="cell-bottom">Resolution</div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displayTypeComparison.value1 : phoneData1.display.type }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displaySizeComparison.value1 : phoneData1.display.size }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displayResolutionComparison.value1 : phoneData1.display.resolution }}></div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displayTypeComparison.value2 : phoneData2.display.type }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displaySizeComparison.value2 : phoneData2.display.size }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? displayResolutionComparison.value2 : phoneData2.display.resolution }}></div>
+                  </td>
+                </tr>
+              );
+            })()}
+            {(() => {
+              const platformOSComparison = highlightDifferences(phoneData1.platform.os, phoneData2.platform.os);
+              const platformChipComparison = highlightDifferences(phoneData1.platform.chip, phoneData2.platform.chip);
+              const platformCPUComparison = highlightDifferences(phoneData1.platform.cpu, phoneData2.platform.cpu);
+              const platformGPUComparison = highlightDifferences(phoneData1.platform.gpu, phoneData2.platform.gpu);
+              return (
+                <tr className="row-5">
+                  <td className="col-1-1 category">PLATFORM</td>
+                  <td className="col-1-2 subcategory cell-content">
+                    <div className="cell-top">OS</div>
+                    <div className="cell-middle">Chipset</div>
+                    <div className="cell-middle">CPU</div>
+                    <div className="cell-bottom">GPU</div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformOSComparison.value1 : phoneData1.platform.os }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformChipComparison.value1 : phoneData1.platform.chip }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformCPUComparison.value1 : phoneData1.platform.cpu }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformGPUComparison.value1 : phoneData1.platform.gpu }}></div>
+                  </td>
+                  <td className="col sub-sub cell-content">
+                    <div className="cell-top" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformOSComparison.value2 : phoneData2.platform.os }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformChipComparison.value2 : phoneData2.platform.chip }}></div>
+                    <div className="cell-middle" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformCPUComparison.value2 : phoneData2.platform.cpu }}></div>
+                    <div className="cell-bottom" dangerouslySetInnerHTML={{ __html: compareMode === 'DIFFERENCES' ? platformGPUComparison.value2 : phoneData2.platform.gpu }}></div>
+                  </td>
+                </tr>
+              );
+            })()}
           </tbody>
         </table>
       </div>
@@ -238,5 +313,4 @@ const PhoneComparison = () => {
   );
 };
 
-// Exporting PhoneComparison component
 export default PhoneComparison;

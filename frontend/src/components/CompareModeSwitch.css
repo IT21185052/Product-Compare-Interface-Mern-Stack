@@ -59,3 +59,18 @@
     margin-right: 5px;
   }
   
+  .compare-mode-switch {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .compare-mode-switch label {
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .compare-mode-switch input {
+    margin-right: 5px;
+  }
+  

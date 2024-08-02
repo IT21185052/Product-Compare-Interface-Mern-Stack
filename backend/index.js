@@ -15,6 +15,7 @@ dotenv.config();
 
 app.use('/assets', express.static('assets'));
 
+//enables CORS for all routes
 app.use(cors());
 app.use(express.json());
 

@@ -187,3 +187,38 @@
   width: 100%;
   margin-top: 30px;
 }
+
+/* Add your existing styles */
+
+.similar {
+  color: gray;
+}
+
+.different {
+  color: black;
+}
+
+.thumbnail-container {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail-container .play-logo {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  background: url('../assets/logo2.png') no-repeat center center;
+  background-size: contain;
+}
+
+.thumbnail-container:hover .play-logo {
+  display: block;
+}
+
+.thumbnail-container .thumbnail {
+  cursor: pointer;
+}
