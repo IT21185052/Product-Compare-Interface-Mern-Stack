@@ -29,7 +29,8 @@ const getYouTubeVideoUrl = (url) => {
 const defaultPhoneData1 = {
   name: 'Xiaomi 14',
   picture: phoneImage1,
-  price: 899,
+  ram:'256GB 12GB RAM',
+  price: 899.99,
   network: 'GSM / CDMA / HSPA / CDMA2000 / LTE / 5G',
   launch: {
     announced: '2023, October 26',
@@ -52,12 +53,14 @@ const defaultPhoneData1 = {
     cpu: 'Octa-core',
     gpu: 'Adreno 730'
   },
-  thumbnail: 'https://www.youtube.com/watch?v=_3Jo7Vy4YbY'
+  thumbnail: 'https://www.youtube.com/watch?v=_3Jo7Vy4YbY',
+  logolink:'https://www.amazon.com/dp/B0CY2FFJT5?tag=gsmarena093-20&linkCode=osi&th=1&psc=1'
 };
 
 const defaultPhoneData2 = {
   name: 'Apple Iphone 15 Pro Max',
   picture: phoneImage2,
+  ram:'256GB 8GB RAM',
   price: 877,
   network: 'GSM / CDMA / HSPA / EVDO / LTE / 5G',
   launch: {
@@ -81,7 +84,8 @@ const defaultPhoneData2 = {
     cpu: 'Hexa-core',
     gpu: 'Apple GPU (5-core graphics)'
   },
-  thumbnail: 'https://www.youtube.com/watch?v=cVpcl7KGly0'
+  thumbnail: 'https://www.youtube.com/watch?v=cVpcl7KGly0',
+  logolink:'https://www.amazon.com/dp/B0CMZ3HT9K?tag=gsmarena093-20&linkCode=osi&th=1&psc=1'
 };
 
 const highlightDifferences = (value1, value2) => {
@@ -94,12 +98,15 @@ const highlightDifferences = (value1, value2) => {
   const highlightedWords2 = [];
 
   for (let i = 0; i < maxLength; i++) {
-    if (words1[i] === words2[i]) {
-      highlightedWords1.push(`<span class="similar">${words1[i]}</span>`);
-      highlightedWords2.push(`<span class="similar">${words2[i]}</span>`);
+    const word1 = words1[i] || ''; // Use empty string if undefined
+    const word2 = words2[i] || ''; // Use empty string if undefined
+
+    if (word1 === word2) {
+      highlightedWords1.push(`<span class="similar">${word1}</span>`);
+      highlightedWords2.push(`<span class="similar">${word2}</span>`);
     } else {
-      highlightedWords1.push(`<span class="different">${words1[i]}</span>`);
-      highlightedWords2.push(`<span class="different">${words2[i]}</span>`);
+      highlightedWords1.push(`<span class="different">${word1}</span>`);
+      highlightedWords2.push(`<span class="different">${word2}</span>`);
     }
   }
 
@@ -108,6 +115,7 @@ const highlightDifferences = (value1, value2) => {
     value2: highlightedWords2.join(' '),
   };
 };
+
 
 
 const PhoneComparison = () => {
@@ -147,8 +155,8 @@ const PhoneComparison = () => {
           <div className="bottom-box">
             {phoneData1 && (
               <>
-                <p className="price">Price: ${phoneData1.price}</p>
-                <img src={logo} alt="logo" className="logo" />
+                  <p className="price">${phoneData1.price}</p>
+                  <img src={logo} alt="logo" className="logo" onClick={() => window.open(phoneData1.logolink, '_blank')} />
                 <p className="all-prices">All Prices</p>
               </>
             )}
@@ -180,8 +188,8 @@ const PhoneComparison = () => {
           <div className="bottom-box">
             {phoneData2 && (
               <>
-                <p className="price">Price: ${phoneData2.price}</p>
-                <img src={logo} alt="logo" className="logo" />
+                  <p className="price">${phoneData1.price}</p>
+                  <img src={logo} alt="logo" className="logo" onClick={() => window.open(phoneData2.logolink, '_blank')} />
                 <p className="all-prices">All Prices</p>
               </>
             )}

@@ -30,13 +30,15 @@ const platformSchema = new mongoose.Schema({
 const phoneSchema = new mongoose.Schema({
   name: String,
   picture: [String],
+  ram: String,
   price: Number,
   network: String,
   launch: launchSchema,
   body: bodySchema,
   display: displaySchema,
   platform: platformSchema,
-  thumbnail: String 
+  thumbnail: String ,
+  logolink:String
 });
 
 const Phone = mongoose.model('Phone', phoneSchema);
