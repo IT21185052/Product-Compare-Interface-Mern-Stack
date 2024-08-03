@@ -31,6 +31,7 @@ const defaultPhoneData1 = {
   picture: phoneImage1,
   ram:'256GB 12GB RAM',
   price: 824.00,
+  allPrice:'https://www.gsmarena.com/xiaomi_14-price-12626.php',
   network: 'GSM / CDMA / HSPA / CDMA2000 / LTE / 5G',
   launch: {
     announced: '2023, October 26',
@@ -54,7 +55,11 @@ const defaultPhoneData1 = {
     gpu: 'Adreno 730'
   },
   thumbnail: 'https://www.youtube.com/watch?v=_3Jo7Vy4YbY',
-  logolink:'https://www.amazon.com/dp/B0CY2FFJT5?tag=gsmarena093-20&linkCode=osi&th=1&psc=1'
+  logolink:'https://www.amazon.com/dp/B0CY2FFJT5?tag=gsmarena093-20&linkCode=osi&th=1&psc=1',
+  review:'https://www.gsmarena.com/xiaomi_14-review-2672.php',
+  specifications:'https://www.gsmarena.com/xiaomi_14-12626.php',
+  opinions:'https://www.gsmarena.com/xiaomi_14-reviews-12626.php',
+  picturest:'https://www.gsmarena.com/xiaomi_14-pictures-12626.php'
 };
 
 const defaultPhoneData2 = {
@@ -62,6 +67,7 @@ const defaultPhoneData2 = {
   picture: phoneImage2,
   ram:'256GB 8GB RAM',
   price: 857.99,
+  allPrice:'https://www.gsmarena.com/apple_iphone_15_pro_max-price-12548.php',
   network: 'GSM / CDMA / HSPA / EVDO / LTE / 5G',
   launch: {
     announced: '2023, September 12',
@@ -85,7 +91,11 @@ const defaultPhoneData2 = {
     gpu: 'Apple GPU (5-core graphics)'
   },
   thumbnail: 'https://www.youtube.com/watch?v=cVpcl7KGly0',
-  logolink:'https://www.amazon.com/dp/B0CMZ3HT9K?tag=gsmarena093-20&linkCode=osi&th=1&psc=1'
+  logolink:'https://www.amazon.com/dp/B0CMZ3HT9K?tag=gsmarena093-20&linkCode=osi&th=1&psc=1',
+  review:'https://www.gsmarena.com/apple_iphone_15_pro_max-review-2618.php',
+  specifications:'https://www.gsmarena.com/apple_iphone_15_pro_max-12548.php',
+  opinions:'https://www.gsmarena.com/apple_iphone_15_pro_max-reviews-12548.php',
+  picturest:'https://www.gsmarena.com/apple_iphone_15_pro_max-pictures-12548.php'
 };
 
 const highlightDifferences = (value1, value2) => {
@@ -144,7 +154,7 @@ const PhoneComparison = () => {
               )}
             </div>
             <div className="right-box">
-              <TextBox />
+              <TextBox reviewLink={phoneData1.review} specificationsLink={phoneData1.specifications} opinionsLink={phoneData1.opinions} picturesLink={phoneData1.picturest}/>
               {phoneData1 && (
                 <div className="thumbnail-container" onClick={() => window.open(getYouTubeVideoUrl(phoneData1.thumbnail), '_blank')}>
                   <img src={getYouTubeThumbnailUrl(phoneData1.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
@@ -158,7 +168,7 @@ const PhoneComparison = () => {
               <>
                   <p className="price">${phoneData1.price}</p>
                   <img src={logo} alt="logo" className="logo" onClick={() => window.open(phoneData1.logolink, '_blank')} />
-                <p className="all-prices">All Prices</p>
+                <p className="all-prices" onClick={() => window.open(phoneData1.allPrice, '_blank')}>All Prices</p>
               </>
             )}
           </div>
@@ -177,7 +187,7 @@ const PhoneComparison = () => {
               )}
             </div>
             <div className="right-box">
-              <TextBox />
+              <TextBox reviewLink={phoneData2.review} specificationsLink={phoneData2.specifications} opinionsLink={phoneData2.opinions} picturesLink={phoneData2.picturest}/>
               {phoneData1 && (
                 <div className="thumbnail-container" onClick={() => window.open(getYouTubeVideoUrl(phoneData2.thumbnail), '_blank')}>
                   <img src={getYouTubeThumbnailUrl(phoneData2.thumbnail)} alt="YouTube thumbnail" className="thumbnail" />
@@ -191,7 +201,7 @@ const PhoneComparison = () => {
               <>
                   <p className="price">${phoneData2.price}</p>
                   <img src={logo} alt="logo" className="logo" onClick={() => window.open(phoneData2.logolink, '_blank')} />
-                <p className="all-prices">All Prices</p>
+                <p className="all-prices" onClick={() => window.open(phoneData2.allPrice, '_blank')}>All Prices</p>
               </>
             )}
           </div>

@@ -32,13 +32,18 @@ const phoneSchema = new mongoose.Schema({
   picture: [String],
   ram: String,
   price: Number,
+  allPrice:String,
   network: String,
   launch: launchSchema,
   body: bodySchema,
   display: displaySchema,
   platform: platformSchema,
   thumbnail: String ,
-  logolink:String
+  logolink:String,
+  review:String,
+  specifications:String,
+  opinions:String,
+  picturest:String
 });
 
 const Phone = mongoose.model('Phone', phoneSchema);
