@@ -12,7 +12,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const phones = [
   {
     name: 'Xiaomi 14',
-    picture: ['./assets/1.jpg'],
+    picture: './assets/1.jpg',
     price: 824.00,
     network: 'GSM / CDMA / HSPA / CDMA2000 / LTE / 5G',
     launch: {
@@ -40,7 +40,7 @@ const phones = [
     },
   {
     name: 'Apple Iphone 15 Pro Max',
-    picture: ['./assets/2.jpg'],
+    picture: './assets/2.jpg',
     price: 857.99,
     network: 'GSM / CDMA / HSPA / EVDO / LTE / 5G',
     launch: {
@@ -68,7 +68,7 @@ const phones = [
   },
   {
     name: 'Huawei nova 5T',
-    picture: ['./assets/3.jpg'],
+    picture: './assets/3.jpg',
     price: 599,
     network: 'GSM / HSPA / LTE',
     launch: {
@@ -96,7 +96,7 @@ const phones = [
   },
   {
     name: 'LG Velvet 5G',
-    picture: ['./assets/4.jpg'],
+    picture: './assets/4.jpg',
     price: 599,
     network: 'GSM / HSPA / LTE / 5G	',
     launch: {
@@ -124,7 +124,7 @@ const phones = [
   },
   {
     name: 'Sony Xperia 1 VI',
-    picture: ['./assets/5.jpg'],
+    picture: './assets/5.jpg',
     price: 599,
     network: 'GSM / HSPA / LTE / 5G',
     launch: {

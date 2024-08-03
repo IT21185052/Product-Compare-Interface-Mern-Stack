@@ -29,7 +29,7 @@ const platformSchema = new mongoose.Schema({
 
 const phoneSchema = new mongoose.Schema({
   name: String,
-  picture: [String],
+  picture: String,
   price: Number,
   network: String,
   launch: launchSchema,
