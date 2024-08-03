@@ -98,8 +98,8 @@ const highlightDifferences = (value1, value2) => {
   const highlightedWords2 = [];
 
   for (let i = 0; i < maxLength; i++) {
-    const word1 = words1[i] || ''; // Use empty string if undefined
-    const word2 = words2[i] || ''; // Use empty string if undefined
+    const word1 = words1[i] || ''; 
+    const word2 = words2[i] || ''; 
 
     if (word1 === word2) {
       highlightedWords1.push(`<span class="similar">${word1}</span>`);
@@ -188,7 +188,7 @@ const PhoneComparison = () => {
           <div className="bottom-box">
             {phoneData2 && (
               <>
-                  <p className="price">${phoneData1.price}</p>
+                  <p className="price">${phoneData2.price}</p>
                   <img src={logo} alt="logo" className="logo" onClick={() => window.open(phoneData2.logolink, '_blank')} />
                 <p className="all-prices">All Prices</p>
               </>
