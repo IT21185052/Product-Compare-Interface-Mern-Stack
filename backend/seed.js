@@ -12,7 +12,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const phones = [
   {
     name: 'Xiaomi 14',
-    picture: ['https://product-compare-interface-mern-stack.vercel.app/api/assets/1.jpg'],
+    picture: ['./assets/1.jpg'],
     ram:'256GB 12GB RAM',
     price: 824.00,
     network: 'GSM / CDMA / HSPA / CDMA2000 / LTE / 5G',
@@ -42,7 +42,7 @@ const phones = [
     },
   {
     name: 'Apple Iphone 15 Pro Max',
-    picture: ['./assets/2.jpg'],
+    picture: ['/assets/2.jpg'],
     ram:'256GB 8GB RAM',
     price: 857.99,
     network: 'GSM / CDMA / HSPA / EVDO / LTE / 5G',
@@ -72,7 +72,7 @@ const phones = [
   },
   {
     name: 'Huawei nova 5T',
-    picture: ['./assets/3.jpg'],
+    picture: ['/assets/3.jpg'],
     ram:'256GB 4GB RAM',
     price: 599,
     network: 'GSM / HSPA / LTE',
@@ -102,7 +102,7 @@ const phones = [
   },
   {
     name: 'LG Velvet 5G',
-    picture: ['./assets/4.jpg'],
+    picture: ['/assets/4.jpg'],
     ram:'256GB 8GB RAM',
     price: 599,
     network: 'GSM / HSPA / LTE / 5G	',
@@ -132,7 +132,7 @@ const phones = [
   },
   {
     name: 'Sony Xperia 1 VI',
-    picture: ['./assets/5.jpg'],
+    picture: ['/assets/5.jpg'],
     ram:'512GB 16GB RAM',
     price: 599,
     network: 'GSM / HSPA / LTE / 5G',

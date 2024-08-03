@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 
 dotenv.config(); 
 
-app.use('/assets', express.static('assets'));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 //enables CORS for all routes
 app.use(cors());

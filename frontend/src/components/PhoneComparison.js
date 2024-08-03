@@ -30,7 +30,7 @@ const defaultPhoneData1 = {
   name: 'Xiaomi 14',
   picture: phoneImage1,
   ram:'256GB 12GB RAM',
-  price: 899.99,
+  price: 824.00,
   network: 'GSM / CDMA / HSPA / CDMA2000 / LTE / 5G',
   launch: {
     announced: '2023, October 26',
@@ -61,7 +61,7 @@ const defaultPhoneData2 = {
   name: 'Apple Iphone 15 Pro Max',
   picture: phoneImage2,
   ram:'256GB 8GB RAM',
-  price: 877,
+  price: 857.99,
   network: 'GSM / CDMA / HSPA / EVDO / LTE / 5G',
   launch: {
     announced: '2023, September 12',
@@ -122,9 +122,7 @@ const PhoneComparison = () => {
   const [phoneData1, setPhoneData1] = useState(defaultPhoneData1);
   const [phoneData2, setPhoneData2] = useState(defaultPhoneData2);
   const [compareMode, setCompareMode] = useState('FULL');
-  const getFullImageUrl = (relativePath) => {
-    return `${process.env.REACT_APP_API_URL}${relativePath}`;
-  };
+  
 
   return (
     <div className="main-container">
@@ -141,7 +139,7 @@ const PhoneComparison = () => {
               {phoneData1 && (
                 <>
                   <h3 className="phone-name">{phoneData1.name}</h3>
-                  <img src={getFullImageUrl(phoneData1.picture[0])} alt={phoneData1.name} className="phone-image" />
+                  <img src={phoneData1.picture} alt={phoneData1.name} className="phone-image" />
                 </>
               )}
             </div>
