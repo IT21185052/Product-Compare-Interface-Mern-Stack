@@ -122,6 +122,9 @@ const PhoneComparison = () => {
   const [phoneData1, setPhoneData1] = useState(defaultPhoneData1);
   const [phoneData2, setPhoneData2] = useState(defaultPhoneData2);
   const [compareMode, setCompareMode] = useState('FULL');
+  const getFullImageUrl = (relativePath) => {
+    return `${process.env.REACT_APP_API_URL}${relativePath}`;
+  };
 
   return (
     <div className="main-container">
@@ -138,7 +141,7 @@ const PhoneComparison = () => {
               {phoneData1 && (
                 <>
                   <h3 className="phone-name">{phoneData1.name}</h3>
-                  <img src={phoneData1.picture} alt={phoneData1.name} className="phone-image" />
+                  <img src={getFullImageUrl(phoneData1.picture[0])} alt={phoneData1.name} className="phone-image" />
                 </>
               )}
             </div>
