@@ -9,7 +9,7 @@ const Phone = require('./models/Phone');
 const app = express();
 
 // Defining the port number for the server
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 dotenv.config(); 
 
