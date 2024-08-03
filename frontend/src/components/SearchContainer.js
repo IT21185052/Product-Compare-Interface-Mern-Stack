@@ -5,7 +5,7 @@ const SearchContainer = ({ setPhoneData }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = async () => {
-    const response = await fetch(`/api/phones?name=${searchTerm}`);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/phones?name=${searchTerm}`);
     const data = await response.json();
     setPhoneData(data);
   };
