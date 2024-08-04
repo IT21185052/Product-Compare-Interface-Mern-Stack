@@ -222,3 +222,42 @@
 .thumbnail-container .thumbnail {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .top-container {
+    flex-direction: column; /* Switch to column layout for smaller screens */
+  }
+
+  .middle-box {
+    flex-direction: column; /* Switch to column layout for smaller screens */
+  }
+
+  .comparison-table td {
+    font-size: 0.7em; /* Adjust font size for smaller screens */
+    padding: 5px; /* Adjust padding for smaller screens */
+  }
+
+  .price {
+    font-size: 1.2em; /* Adjust font size for smaller screens */
+  }
+
+  .all-prices {
+    font-size: 1.5em; /* Adjust font size for smaller screens */
+  }
+
+  .phone-name {
+    font-size: 1em; /* Adjust font size for smaller screens */
+  }
+
+  .category {
+    font-size: 1em; /* Adjust font size for smaller screens */
+  }
+
+  .subcategory {
+    font-size: 0.7em; /* Adjust font size for smaller screens */
+  }
+
+  .sub-sub {
+    font-size: 0.6em; /* Adjust font size for smaller screens */
+  }
+}

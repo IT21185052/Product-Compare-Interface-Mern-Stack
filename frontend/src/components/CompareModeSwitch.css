@@ -73,4 +73,20 @@
   .compare-mode-switch input {
     margin-right: 5px;
   }
+  @media (max-width: 600px) {
+    .compare-mode-switch {
+      margin-top: 20px;
+    }
   
+    .left-rect, .right-rect {
+      padding: 5px 10px;
+    }
+  
+    .circle {
+      padding: 5px;
+    }
+  
+    .compare-mode-text {
+      font-size: 0.7em;
+    }
+  }
